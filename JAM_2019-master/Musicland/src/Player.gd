@@ -8,7 +8,6 @@ export var gravity_scale = 20.0
 onready var timer = get_node("Timer")
 onready var res = get_node("resettab")
 
-#var can_jump = true
 enum {
 	JUMP,
 	RUN,
@@ -16,9 +15,11 @@ enum {
 }
 
 var state = RUN
-var array = []
+
 
 onready var animation = $PlayerAnimatedSprite
+
+onready var tab = preload("res://Barrel.tscn").duplicate()
 
 func _ready():
 	get_viewport().audio_listener_enable_2d = true
@@ -31,15 +32,15 @@ var key = true
 var toClean = false
 	
 func _physics_process(delta):
+	var arr = tab.instance()
 	match state:
 		RUN:
 			animation.play("run")
 			if toClean:
-				array.clear()
 				toClean = false
-			print (array)
-			if (array.size() > 4):
-				array.pop_front()
+				arr.player.clear()
+			if (arr.player.size() > 4):
+				arr.player.pop_front()
 		JUMP:
 			velocity = Vector2.ZERO
 			velocity.y -= jump_velocity
@@ -59,25 +60,26 @@ func playSound(path):
 
 
 func _input(event):
+	var arr = tab.instance()
 	if event.is_action_pressed("Jump") and state == RUN:
 		state = JUMP
 	elif event.is_action_pressed("ui_up") and key:
-		array.push_back(1)
+		arr.player.push_back(1)
 		key = false
 		timer.start()
 		$do.play()
 	elif event.is_action_pressed("ui_down") and key:
-		array.push_back(2)
+		arr.player.push_back(2)
 		key = false
 		timer.start()
 		$re.play()
 	elif event.is_action_pressed("ui_left") and key:
-		array.push_back(3)
+		arr.player.push_back(3)
 		key = false
 		timer.start()
 		$mi.play()
 	elif event.is_action_pressed("ui_right") and key:
-		array.push_back(4)
+		arr.player.push_back(4)
 		key = false
 		timer.start()
 		$fa.play()

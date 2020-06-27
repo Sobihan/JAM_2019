@@ -18,13 +18,13 @@ position = Vector2( -17.2704, 508.981 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 442.153, 488.551 )
 
+[node name="Spawners" parent="Player" instance=ExtResource( 7 )]
+position = Vector2( 705.807, 17.353 )
+scenes = [ ExtResource( 5 ), ExtResource( 6 ) ]
+
 [node name="BlackHoll" parent="." instance=ExtResource( 4 )]
 margin_left = -4.00452
 margin_top = 177.534
 margin_right = 823.995
 margin_bottom = 920.534
 rect_scale = Vector2( 0.284044, 0.279125 )
-
-[node name="Spawners" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1147.96, 505.904 )
-scenes = [ ExtResource( 5 ), ExtResource( 6 ) ]
