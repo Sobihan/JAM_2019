@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Player.gd" type="Script" id=1]
 [ext_resource path="res://asset/Sprites/Player/dog.png" type="Texture" id=2]
@@ -6,18 +6,22 @@
 [ext_resource path="res://asset/Sprites/Player/dog4.png" type="Texture" id=4]
 [ext_resource path="res://asset/Sprites/Player/dog1.png" type="Texture" id=5]
 [ext_resource path="res://asset/Sprites/Player/dog5.png" type="Texture" id=6]
+[ext_resource path="res://asset/Audio/do.wav" type="AudioStream" id=7]
+[ext_resource path="res://asset/Audio/re.wav" type="AudioStream" id=8]
+[ext_resource path="res://asset/Audio/mi.wav" type="AudioStream" id=9]
+[ext_resource path="res://asset/Audio/fa.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "jump",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "run",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "jump",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -42,5 +46,17 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1.70168, 30.0338 )
 shape = SubResource( 3 )
+
+[node name="do" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="re" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="mi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="fa" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
