@@ -68,10 +68,9 @@ func _physics_process(delta):
 			pass
 	velocity.y += gravity_scale
 	move_and_collide(velocity * delta)
-	arr = tab.instance()
-	if (arr.touch == true):
-		life = 0
-		print(life)
+	if get_position().x <= 150:
+		get_tree().quit()
+
 	
 
 func _input(event):
