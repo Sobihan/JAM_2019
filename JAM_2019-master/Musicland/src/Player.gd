@@ -6,6 +6,7 @@ export var jump_velocity = 500.0
 export var gravity_scale = 20.0
 
 onready var timer = get_node("Timer")
+onready var res = get_node("resettab")
 
 #var can_jump = true
 enum {
@@ -15,21 +16,30 @@ enum {
 }
 
 var state = RUN
+var array = []
 
 onready var animation = $PlayerAnimatedSprite
 
 func _ready():
 	get_viewport().audio_listener_enable_2d = true
 	timer.set_wait_time(0.1)
+	res.set_wait_time(2)
+	res.start()
 	timer.start()
 
 var key = true
-
+var toClean = false
 	
 func _physics_process(delta):
 	match state:
 		RUN:
 			animation.play("run")
+			if toClean:
+				array.clear()
+				toClean = false
+			print (array)
+			if (array.size() > 4):
+				array.pop_front()
 		JUMP:
 			velocity = Vector2.ZERO
 			velocity.y -= jump_velocity
@@ -52,18 +62,22 @@ func _input(event):
 	if event.is_action_pressed("Jump") and state == RUN:
 		state = JUMP
 	elif event.is_action_pressed("ui_up") and key:
+		array.push_back(1)
 		key = false
 		timer.start()
 		$do.play()
 	elif event.is_action_pressed("ui_down") and key:
+		array.push_back(2)
 		key = false
 		timer.start()
 		$re.play()
 	elif event.is_action_pressed("ui_left") and key:
+		array.push_back(3)
 		key = false
 		timer.start()
 		$mi.play()
 	elif event.is_action_pressed("ui_right") and key:
+		array.push_back(4)
 		key = false
 		timer.start()
 		$fa.play()
@@ -79,3 +93,7 @@ func _on_Area2D_body_exited(body):
 
 func _on_Timer_timeout():
 	key = true
+
+
+func _on_resettab_timeout():
+	toClean = true
