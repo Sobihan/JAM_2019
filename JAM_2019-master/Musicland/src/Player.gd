@@ -119,6 +119,7 @@ func _on_Area2D_body_entered(body):
 		state = RUN
 
 func _on_Area2D_body_exited(body):
+	print("heuu")
 	if body is StaticBody2D:
 		state = JUMP
 
@@ -129,3 +130,11 @@ func _on_Timer_timeout():
 
 func _on_resettab_timeout():
 	toClean = true
+
+
+func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
+	
+	velocity = Vector2()
+	velocity.x = -2000
+	velocity.y = 0
+	move_and_slide(velocity)

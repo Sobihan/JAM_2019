@@ -10,14 +10,11 @@ func _physics_process(delta):
 
 
 func _on_Pickup_body_entered(body):
-	if body.name == "Player":
-		get_tree().quit()
-		queue_free()
+	pass
 
 
 
 
 func _on_EffectDammage_body_entered(body):
-	if body.name == "Player":
-		get_tree().quit()
+	pass
 
