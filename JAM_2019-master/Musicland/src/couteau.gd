@@ -8,7 +8,11 @@ func _physics_process(delta):
 	move()
 
 
-func _on_Pickup_body_entered(body):
-	pass
-#	if body.name == "Player":
-#		queue_free()
+#if body.name == "Player":
+#		get_tree().quit()
+
+
+
+func _on_EffectDammage_body_entered(body):
+	if body.name == "Player":
+		get_tree().quit()

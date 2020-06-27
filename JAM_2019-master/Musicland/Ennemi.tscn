@@ -5,7 +5,7 @@
 [ext_resource path="res://EffectDammage.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1165.24, 611.375 )
+extents = Vector2( 1300.67, 838.868 )
 
 [node name="Ennemi" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,3 +20,5 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/EffectDammage"]
 position = Vector2( -24.6013, 0 )
 shape = SubResource( 1 )
+[connection signal="body_entered" from="Sprite/EffectDammage" to="." method="_on_EffectDammage_body_entered"]
+[connection signal="body_exited" from="Sprite/EffectDammage" to="." method="_on_EffectDammage_body_exited"]

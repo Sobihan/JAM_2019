@@ -1,7 +1,7 @@
 extends "ScrollMovement.gd"
 
 export var player = []
-
+export var touch = false
 func _physics_process(delta):
 	if (player == [2, 1, 1, 1]):
 		queue_free()
@@ -9,6 +9,6 @@ func _physics_process(delta):
 
 
 func _on_Pickup_body_entered(body):
-	pass
-#	if body.name == "Player":
-#		queue_free()
+	if body.name == "Player":
+		get_tree().quit()
+		queue_free()

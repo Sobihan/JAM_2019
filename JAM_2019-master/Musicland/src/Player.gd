@@ -8,6 +8,8 @@ export var gravity_scale = 20.0
 onready var timer = get_node("Timer")
 onready var res = get_node("resettab")
 
+var life = 3
+
 enum {
 	JUMP,
 	RUN,
@@ -66,14 +68,11 @@ func _physics_process(delta):
 			pass
 	velocity.y += gravity_scale
 	move_and_collide(velocity * delta)
+	arr = tab.instance()
+	if (arr.touch == true):
+		life = 0
+		print(life)
 	
-
-func playSound(path):
-	var player = AudioStreamPlayer.new()
-	self.add_child(player)
-	player.stream = load(path)
-	player.play()
-
 
 func _input(event):
 	var arr = tab.instance()
