@@ -3,7 +3,7 @@ extends "ScrollMovement.gd"
 export var player = []
 export var touch = false
 func _physics_process(delta):
-	if (player == [2, 1, 1, 1]):
+	if (player == [1, 1, 2, 2]):
 		queue_free()
 	move()
 

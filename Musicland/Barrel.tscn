@@ -11,8 +11,8 @@ extents = Vector2( 28.25, 32.75 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5.54607, -4.78868 )
-scale = Vector2( 0.147738, 0.147738 )
+position = Vector2( 1.2052, -6.56821 )
+scale = Vector2( 0.193768, 0.185034 )
 texture = ExtResource( 2 )
 
 [node name="EffectDammage" parent="." instance=ExtResource( 3 )]

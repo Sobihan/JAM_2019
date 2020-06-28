@@ -4,7 +4,7 @@ export var player = []
 export var touch = false
 
 func _physics_process(delta):
-	if (player == [4, 1, 1, 1]):
+	if (player == [4, 3, 1, 2]):
 		queue_free()
 	move()
 
