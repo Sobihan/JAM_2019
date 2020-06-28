@@ -57,3 +57,4 @@ scene_to_load = "res://Game.tscn"
 margin_top = 230.0
 margin_bottom = 290.0
 flat = true
+scene_to_load = "res://How to play scene.tscn"

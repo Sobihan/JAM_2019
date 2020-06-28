@@ -123,7 +123,6 @@ func _on_Area2D_body_entered(body):
 		state = RUN
 
 func _on_Area2D_body_exited(body):
-	print("heuu")
 	if body is StaticBody2D:
 		state = JUMP
 
