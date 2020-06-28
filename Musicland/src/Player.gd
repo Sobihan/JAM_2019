@@ -74,6 +74,8 @@ func _physics_process(delta):
 		Signals.emit_signal("killplayer")
 	else:
 		score += 1
+	if score % 500 == 0:
+		Signals.emit_signal("accelerate")
 	Signals.emit_signal("updatescore", score)
 
 	
