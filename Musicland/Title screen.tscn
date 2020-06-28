@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://asset/Backgrounds/generatedtext.png" type="Texture" id=1]
+[ext_resource path="res://HowToPlayButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Title screen.gd" type="Script" id=3]
+[ext_resource path="res://StartButton.tscn" type="PackedScene" id=4]
+
+[node name="Title screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.007
+anchor_top = 0.075
+anchor_right = 0.99
+anchor_bottom = 0.853
+margin_left = 0.04
+margin_top = -3.8147e-06
+margin_right = -0.200073
+margin_bottom = -0.160034
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_right = 1258.0
+margin_bottom = 114.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 118.0
+margin_right = 1258.0
+margin_bottom = 559.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 1258.0
+margin_bottom = 441.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 150.0
+margin_bottom = 210.0
+flat = true
+scene_to_load = "res://Game.tscn"
+
+[node name="HowToPlayButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 2 )]
+margin_top = 230.0
+margin_bottom = 290.0
+flat = true
