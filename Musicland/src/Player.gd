@@ -25,6 +25,7 @@ onready var tab = preload("res://Bone.tscn").duplicate()
 onready var barril = preload("res://Barrel.tscn").duplicate()
 onready var rock = preload("res://Ennemi.tscn").duplicate()
 onready var couteau = preload("res://couteau.tscn").duplicate()
+onready var ho = preload("res://hole.tscn").duplicate()
 
 var score = 0
 
@@ -39,6 +40,7 @@ var key = true
 var toClean = false
 	
 func _physics_process(delta):
+	var e = ho.instance()
 	var arr = tab.instance()
 	var b = barril.instance()
 	var c = rock.instance()
@@ -60,6 +62,8 @@ func _physics_process(delta):
 				c.player.clear()
 			if (d.player.size() > 4):
 				d.player.clear()
+			if (e.player.size() > 5):
+				e.player.clear()
 		JUMP:
 			velocity = Vector2.ZERO
 			velocity.y -= jump_velocity
@@ -76,6 +80,8 @@ func _physics_process(delta):
 		score += 1
 	if score % 500 == 0:
 		Signals.emit_signal("accelerate")
+	if score == 500:
+		Signals.emit_signal("addboss")
 	Signals.emit_signal("updatescore", score)
 
 	
@@ -85,6 +91,7 @@ func _input(event):
 	var b = barril.instance()
 	var c = rock.instance()
 	var d = couteau.instance()
+	var e = ho.instance()
 	if event.is_action_pressed("Jump") and state == RUN:
 		state = JUMP
 	elif event.is_action_pressed("ui_up") and key:
@@ -92,6 +99,7 @@ func _input(event):
 		b.player.push_back(1)
 		c.player.push_back(1)
 		d.player.push_back(1)
+		e.player.push_back(1)
 		key = false
 		timer.start()
 		$do.play()
@@ -100,6 +108,7 @@ func _input(event):
 		b.player.push_back(2)
 		c.player.push_back(2)
 		d.player.push_back(2)
+		e.player.push_back(2)
 		key = false
 		timer.start()
 		$re.play()
@@ -108,6 +117,7 @@ func _input(event):
 		b.player.push_back(3)
 		c.player.push_back(3)
 		d.player.push_back(3)
+		e.player.push_back(3)
 		key = false
 		timer.start()
 		$mi.play()
@@ -116,6 +126,7 @@ func _input(event):
 		b.player.push_back(4)
 		c.player.push_back(4)
 		d.player.push_back(4)
+		e.player.push_back(4)
 		key = false
 		timer.start()
 		$fa.play()
