@@ -7,7 +7,7 @@ var selected_scene_index = 0
 
 
 onready var timer = get_node("Timer")
-var off = 4.0
+var off = 3.0
 var isboss = false
 
 func _ready():
